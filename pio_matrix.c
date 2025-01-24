@@ -17,7 +17,7 @@
 #define OUT_PIN 7
 
 // Configuração teclado matricial
-uint8_t linhas[4] = {16, 17, 18, 8};
+uint8_t linhas[4] = {16, 17, 18, 28};
 uint8_t colunas[4] = {19, 20, 4, 9};
 uint8_t n_lin = 4, n_col = 4;
 
