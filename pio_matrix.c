@@ -208,7 +208,7 @@ int main() {
                 reboot_device();
                 break;
 
-            case '1':
+            case '1':  //GIL
                 
                 break;
 
