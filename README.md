@@ -1,1 +1,4 @@
-Leitura de botão no GPIO 6 e acionamento da Matriz de Leds pela GPIO 07.
+
+# matrix_keypad
+ Geração de animações em uma matriz de LEDs 5x5. 
+
