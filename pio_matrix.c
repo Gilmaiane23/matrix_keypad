@@ -8,7 +8,9 @@
 #include "pico/bootrom.h"
 
 // Arquivo .pio
-#include "pio_matrix.pio.h"
+// #include "pio_matrix.pio.h"
+
+#include "animations/daniel_alencar.h"
 
 // Número de LEDs
 #define NUM_PIXELS 25
@@ -181,7 +183,14 @@ int main() {
     pio_matrix_program_init(pio, sm, offset, OUT_PIN);
     desenho_on(desenhopadrao, pio, sm, r,g,b);
 
+    // Configurando a matriz de leds
+    setup_led_matrix();
+    long unsigned int frames = sizeof(movie) / sizeof(movie[0]);
+
     while (true) {
+        // Testando animação com 200 de delay
+        animate(movie, frames, 200);
+
         char tecla = teclado();
         switch (tecla) {
 
@@ -225,6 +234,8 @@ int main() {
                 break;
 
             case '6':
+                long unsigned int frames = sizeof(movie) / sizeof(movie[0]);
+                animate(movie, frames, 200);
                 break;
 
             case '7':
