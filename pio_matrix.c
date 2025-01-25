@@ -188,8 +188,6 @@ int main() {
     long unsigned int frames = sizeof(movie) / sizeof(movie[0]);
 
     while (true) {
-        // Testando animação com 200 de delay
-        animate(movie, frames, 200);
 
         char tecla = teclado();
         switch (tecla) {
@@ -234,7 +232,6 @@ int main() {
                 break;
 
             case '6':
-                long unsigned int frames = sizeof(movie) / sizeof(movie[0]);
                 animate(movie, frames, 200);
                 break;
 
