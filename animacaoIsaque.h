@@ -23,34 +23,40 @@ const Cor cores[] = {
 };
 
 double frameA[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                              0.0, 1.8, 1.8, 1.8, 0.0,
-                              1.8, 0.0, 0.0, 0.0, 1.8,
-                              0.0, 1.8, 0.0, 1.8, 0.0,
-                              0.0, 0.0, 0.0, 0.0, 0.0};
+                             0.0, 1.8, 1.8, 1.8, 0.0,
+                             1.8, 0.0, 0.0, 0.0, 1.8,
+                             0.0, 1.8, 0.0, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0};
 
 double frameB[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                              0.0, 1.8, 1.8, 1.8, 0.0,
-                              1.8, 0.0, 0.0, 0.0, 1.8,
-                              0.0, 1.1, 0.0, 1.8, 0.0,
-                              0.0, 0.0, 0.0, 0.0, 0.};
+                             1.8, 1.8, 1.8, 1.8, 1.8,
+                             0.0, 0.0, 0.0, 0.0, 0.0,
+                             0.0, 1.8, 0.0, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0};
 
-double frameC[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                              0.0, 1.8, 1.8, 1.8, 0.0,
-                              1.8, 0.0, 0.0, 0.0, 1.8,
-                              0.0, 1.8, 0.0, 1.8, 0.0,
-                              0.0, 0.0, 0.0, 0.0, 0.};
+// double frameB[NUM_PIXELS] = {1.8, 1.8, 1.8, 1.8, 1.8,
+//                              1.8, 0.0, 0.0, 0.0, 1.8,
+//                              0.0, 1.8,1.8, 1.8, 0.0,
+//                              1.8, 0.0, 1.8, 0.0, 1.8,
+//                              1.8, 1.8, 1.8, 1.8, 1.8};
 
-double frameD[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                              0.0, 1.8, 1.8, 1.8, 0.0,
-                              1.8, 0.0, 0.0, 0.0, 1.8,
-                              0.0, 1.1, 0.0, 1.8, 0.0,
-                              0.0, 0.0, 0.0, 0.0, 0.};
+double frameC[NUM_PIXELS] = {1.8, 0.0, 0.0, 0.0, 1.8,
+                             0.0, 1.8, 1.8, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0,
+                             0.0, 1.8, 0.0, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0};
+
+double frameD[NUM_PIXELS] = {0.0, 1.8, 1.8, 1.8, 0.0,
+                             1.8, 0.0, 0.0, 0.0, 1.8,
+                             0.0, 1.8, 1.8, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0,
+                             0.0, 1.8, 0.0, 1.8, 0.0};
 
 double frameE[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                               0.0, 1.8, 1.8, 1.8, 0.0,
-                               1.8, 0.0, 0.0, 0.0, 1.8,
-                               0.0, 1.8, 0.0, 1.8, 0.0,
-                               0.0, 0.0, 0.0, 0.0, 0.};
+                             0.0, 1.8, 1.8, 1.8, 0.0,
+                             1.8, 0.0, 0.0, 0.0, 1.8,
+                             0.0, 1.8, 0.0, 1.8, 0.0,
+                             0.0, 0.0, 0.0, 0.0, 0.0};
 
 // Função para converter brilho e cor em um valor 32 bits
 uint32_t calcular_rgb(uint8_t r, uint8_t g, uint8_t b, double brilho)
@@ -74,7 +80,7 @@ void aplicar_padrao(PIO pio, uint sm, const Cor *cor, const double *padrao)
 // Função de animação principal
 void executar_animacao(PIO pio, uint sm)
 {
-    const double *padroes[] = { frameA, frameB, frameC, frameD, frameE};
+    const double *padroes[] = {frameA,  frameB, frameC, frameD, frameE};
     int num_padroes = sizeof(padroes) / sizeof(padroes[0]);
 
     for (int i = 0; i < num_padroes; i++)
@@ -82,7 +88,7 @@ void executar_animacao(PIO pio, uint sm)
         for (int j = 0; j < sizeof(cores) / sizeof(cores[0]); j++)
         {
             aplicar_padrao(pio, sm, &cores[j], padroes[i]);
-            sleep_ms(200); // Exibe cada padrão com uma cor por 500ms
+            sleep_ms(500); // Exibe cada padrão com uma cor por 500ms
         }
     }
 
@@ -90,4 +96,4 @@ void executar_animacao(PIO pio, uint sm)
     aplicar_padrao(pio, sm, &(Cor){0, 0, 0}, frameA); // Define cor preta
 }
 
-#endif 
+#endif
