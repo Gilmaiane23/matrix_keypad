@@ -7,6 +7,9 @@
 #include "hardware/adc.h"
 #include "pico/bootrom.h"
 
+// Animação Isaque
+#include "animacaoIsaque.h"
+
 // Arquivo .pio
 #include "pio_matrix.pio.h"
 
@@ -234,6 +237,7 @@ int main() {
                 break;
 
             case '9':
+                executar_animacao(pio, sm);
                 break;
 
             case '0'://buzzer
