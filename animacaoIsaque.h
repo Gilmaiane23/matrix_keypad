@@ -22,31 +22,31 @@ const Cor cores[] = {
     {0, 0, 255}, // Azul
 };
 
-double desenhA[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
+double frameA[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
                               0.0, 1.8, 1.8, 1.8, 0.0,
                               1.8, 0.0, 0.0, 0.0, 1.8,
                               0.0, 1.8, 0.0, 1.8, 0.0,
                               0.0, 0.0, 0.0, 0.0, 0.0};
 
-double desenhB[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
+double frameB[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
                               0.0, 1.8, 1.8, 1.8, 0.0,
                               1.8, 0.0, 0.0, 0.0, 1.8,
                               0.0, 1.1, 0.0, 1.8, 0.0,
                               0.0, 0.0, 0.0, 0.0, 0.};
 
-double desenhC[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
+double frameC[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
                               0.0, 1.8, 1.8, 1.8, 0.0,
                               1.8, 0.0, 0.0, 0.0, 1.8,
                               0.0, 1.8, 0.0, 1.8, 0.0,
                               0.0, 0.0, 0.0, 0.0, 0.};
 
-double desenhD[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
+double frameD[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
                               0.0, 1.8, 1.8, 1.8, 0.0,
                               1.8, 0.0, 0.0, 0.0, 1.8,
                               0.0, 1.1, 0.0, 1.8, 0.0,
                               0.0, 0.0, 0.0, 0.0, 0.};
 
-double desenh20[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
+double frameE[NUM_PIXELS] = {0.0, 0.0, 0.0, 0.0, 0.0,
                                0.0, 1.8, 1.8, 1.8, 0.0,
                                1.8, 0.0, 0.0, 0.0, 1.8,
                                0.0, 1.8, 0.0, 1.8, 0.0,
@@ -74,7 +74,7 @@ void aplicar_padrao(PIO pio, uint sm, const Cor *cor, const double *padrao)
 // Função de animação principal
 void executar_animacao(PIO pio, uint sm)
 {
-    const double *padroes[] = {/*desenhpadrao,*/ desenhA, desenhB, desenhC, desenhD, desenh20};
+    const double *padroes[] = { frameA, frameB, frameC, frameD, frameE};
     int num_padroes = sizeof(padroes) / sizeof(padroes[0]);
 
     for (int i = 0; i < num_padroes; i++)
@@ -87,7 +87,7 @@ void executar_animacao(PIO pio, uint sm)
     }
 
     // Apagar os LEDs ao final da animação
-    aplicar_padrao(pio, sm, &(Cor){0, 0, 0}, desenhA); // Define cor preta
+    aplicar_padrao(pio, sm, &(Cor){0, 0, 0}, frameA); // Define cor preta
 }
 
 #endif 
