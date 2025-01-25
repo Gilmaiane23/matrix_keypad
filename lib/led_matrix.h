@@ -1,3 +1,6 @@
+#ifndef LED_MATRIX_H
+#define LED_MATRIX_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -21,30 +24,34 @@
 PIO pio;
 uint offset, sm;
 
-void setup_led_matrix() {
-    pio = pio0; 
-    bool ok;
-    
-    // Coloca a frequência de clock para 128 MHz, facilitando a divisão pelo clock
-    ok = set_sys_clock_khz(128000, false);
+void setup_led_matrix()
+{
+  pio = pio0;
+  bool ok;
 
-    // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
-    stdio_init_all();
+  // Coloca a frequência de clock para 128 MHz, facilitando a divisão pelo clock
+  ok = set_sys_clock_khz(128000, false);
 
-    printf("iniciando a transmissão PIO");
-    if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
+  // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
+  stdio_init_all();
 
-    // Configurações da PIO
-    offset = pio_add_program(pio, &pio_matrix_program);
-    sm = pio_claim_unused_sm(pio, true);
-    pio_matrix_program_init(pio, sm, offset, OUT_PIN);
+  printf("iniciando a transmissão PIO");
+  if (ok)
+    printf("clock set to %ld\n", clock_get_hz(clk_sys));
+
+  // Configurações da PIO
+  offset = pio_add_program(pio, &pio_matrix_program);
+  sm = pio_claim_unused_sm(pio, true);
+  pio_matrix_program_init(pio, sm, offset, OUT_PIN);
 }
 
-void bin_printf(int num) {
- int i;
- for (i = 31; i >= 0; i--) {
-  (num & (1 << i)) ? printf("1") : printf("0");
- }
+void bin_printf(int num)
+{
+  int i;
+  for (i = 31; i >= 0; i--)
+  {
+    (num & (1 << i)) ? printf("1") : printf("0");
+  }
 }
 
 uint32_t matrix_rgb_conversor(double b, double r, double g)
@@ -57,45 +64,48 @@ uint32_t matrix_rgb_conversor(double b, double r, double g)
 }
 
 double convertDrawingToMatrixIndex(
-    double* desenho, int index
-) {
-    int actualRow = index / COLUMNS;
-    int actualColumn = index % COLUMNS;
-    if(actualRow % 2) {
-        return desenho[(actualRow * COLUMNS) + (COLUMNS - 1 - actualColumn)];
-    } else {
-        return desenho[index];
-    }
+    double *desenho, int index)
+{
+  int actualRow = index / COLUMNS;
+  int actualColumn = index % COLUMNS;
+  if (actualRow % 2)
+  {
+    return desenho[(actualRow * COLUMNS) + (COLUMNS - 1 - actualColumn)];
+  }
+  else
+  {
+    return desenho[index];
+  }
 }
 
 void draw(
-    double **desenhoRGB
-){
-    uint32_t led_value;
-    for (int16_t i = 0; i < NUM_LEDS; i++) {
-        led_value = matrix_rgb_conversor(
-            convertDrawingToMatrixIndex(
-              desenhoRGB[0], NUM_LEDS - 1 - i
-            ),
-            convertDrawingToMatrixIndex(
-              desenhoRGB[1], NUM_LEDS - 1 - i
-            ),
-            convertDrawingToMatrixIndex(
-              desenhoRGB[2], NUM_LEDS - 1 - i
-            )
-        );
-        pio_sm_put_blocking(pio, sm, led_value);
-    }
-    bin_printf(led_value);
+    double **desenhoRGB)
+{
+  uint32_t led_value;
+  for (int16_t i = 0; i < NUM_LEDS; i++)
+  {
+    led_value = matrix_rgb_conversor(
+        convertDrawingToMatrixIndex(
+            desenhoRGB[0], NUM_LEDS - 1 - i),
+        convertDrawingToMatrixIndex(
+            desenhoRGB[1], NUM_LEDS - 1 - i),
+        convertDrawingToMatrixIndex(
+            desenhoRGB[2], NUM_LEDS - 1 - i));
+    pio_sm_put_blocking(pio, sm, led_value);
+  }
+  bin_printf(led_value);
 }
 
 void animate(
-  double*** movie,
-  uint frames,
-  uint sleep_time
-) {
-  for(int i = 0; i < frames; i++) {
+    double ***movie,
+    uint frames,
+    uint sleep_time)
+{
+  for (int i = 0; i < frames; i++)
+  {
     draw(movie[i]);
     sleep_ms(sleep_time);
   }
 }
+
+#endif // LED_MATRIX_H
