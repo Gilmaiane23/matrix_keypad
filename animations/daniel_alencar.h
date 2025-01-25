@@ -1,4 +1,4 @@
-#include "../led_matrix/led_matrix.h"
+#include "../lib/led_matrix.h"
 
 double drawning_red_1[NUM_LEDS] = {
     0.0, 0.0, 0.0, 0.0, 0.0,
