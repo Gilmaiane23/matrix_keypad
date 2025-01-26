@@ -10,6 +10,8 @@
 // Arquivo .pio
 #include "pio_matrix.pio.h"
 
+#include "animacoes.h"
+
 // Número de LEDs
 #define NUM_PIXELS 25
 
@@ -155,7 +157,17 @@ void desenho_pio20(double *desenho, PIO pio, uint sm, double r, double g, double
     }
 }
 
-
+void anima(int16_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS], PIO pio, uint sm){
+    uint32_t valor_led;
+    for (int16_t i = 0; i < num_frames; i++)
+    {
+        for (int16_t j = 0; j < NUM_PIXELS; j++) {
+            valor_led =desenho[i][24-j];
+            pio_sm_put_blocking(pio, sm, valor_led);
+        }
+        sleep_ms(1000);
+    }
+}
 
 //Função para reboot
 void reboot_device() {
@@ -212,7 +224,8 @@ int main() {
                 
                 break;
 
-            case '2':
+            case '2':   //Arthur
+                anima(9,arthur,pio,sm);
                 break;
 
             case '3':
