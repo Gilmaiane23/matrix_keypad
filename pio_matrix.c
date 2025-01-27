@@ -18,7 +18,8 @@
 // Pino de saída
 #define OUT_PIN 7
 
-#define FPS 500
+// Tempo do frame
+#define FPS 200
 
 // Configuração teclado matricial
 uint8_t linhas[4] = {16, 17, 18, 28};
@@ -63,7 +64,7 @@ char teclado() {
 }
 
 
-// Desenhos
+// Desenhos padrões
 
 double desenhopadrao[25] = {0.1, 0.1, 0.1, 0.1, 0.1,
                            0.0, 0.0, 0.0, 0.0, 0.1, 
@@ -159,6 +160,9 @@ void desenho_pio20(double *desenho, PIO pio, uint sm, double r, double g, double
     }
 }
 
+
+// Funções para as animações 
+
 uint8_t obter_index(uint8_t i) {
     uint8_t x = i % 5;  // Coluna
     uint8_t y = i / 5;  // Linha
@@ -177,7 +181,7 @@ void anima(uint8_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS],uint sm){
         for (uint8_t j = 0; j < NUM_PIXELS; j++) 
         {
             uint8_t pos = obter_index(j);
-            valor_led = desenho[i][24-pos];
+            valor_led = desenho[i][24-pos] * 5.0;
             pio_sm_put_blocking(pio0, sm, valor_led);
         }
         sleep_ms(FPS);
@@ -196,7 +200,7 @@ void reboot_device() {
 }
 
 
-
+// Programa principal
 int main() {
     PIO pio = pio0;
     bool ok;
@@ -249,10 +253,11 @@ int main() {
                 animacao(2,9,arthur,sm);
                 break;
 
-            case '3':
+            case '3': 
                 break;
 
-            case '4':
+            case '4': // Daniel Porto
+                animacao(2,15,daniel,sm);
                 break;
 
             case '5':
@@ -261,7 +266,8 @@ int main() {
             case '6':
                 break;
 
-            case '7':
+            case '7': // Julio
+                animacao(3,5,julio,sm);
                 break;
 
             case '8':
