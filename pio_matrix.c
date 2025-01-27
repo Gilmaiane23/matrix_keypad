@@ -274,6 +274,7 @@ int main() {
                 break;
 
             case '9':
+                executar_animacao(pio, sm); //Isaque
                 break;
 
             case '0'://buzzer
@@ -288,3 +289,4 @@ int main() {
         
     }
 }
+
