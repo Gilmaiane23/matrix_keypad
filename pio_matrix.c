@@ -18,6 +18,8 @@
 // Pino de saída
 #define OUT_PIN 7
 
+#define FPS 500
+
 // Configuração teclado matricial
 uint8_t linhas[4] = {16, 17, 18, 28};
 uint8_t colunas[4] = {19, 20, 4, 9};
@@ -157,15 +159,34 @@ void desenho_pio20(double *desenho, PIO pio, uint sm, double r, double g, double
     }
 }
 
-void anima(int16_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS], PIO pio, uint sm){
+uint8_t obter_index(uint8_t i) {
+    uint8_t x = i % 5;  // Coluna
+    uint8_t y = i / 5;  // Linha
+    if (y % 2 == 0) {
+        return y * 5 + x;
+    } else {
+        return y * 5 + (4 - x);
+    }
+}
+
+//rotina para acionar a matrix de leds - ws2812b
+
+void anima(uint8_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS],uint sm){
     uint32_t valor_led;
-    for (int16_t i = 0; i < num_frames; i++)
-    {
-        for (int16_t j = 0; j < NUM_PIXELS; j++) {
-            valor_led =desenho[i][24-j];
-            pio_sm_put_blocking(pio, sm, valor_led);
+    for (uint8_t i = 0; i < num_frames; i++){
+        for (uint8_t j = 0; j < NUM_PIXELS; j++) 
+        {
+            uint8_t pos = obter_index(j);
+            valor_led = desenho[i][24-pos];
+            pio_sm_put_blocking(pio0, sm, valor_led);
         }
-        sleep_ms(1000);
+        sleep_ms(FPS);
+    }
+}
+
+void animacao(uint8_t repeticoes,uint8_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS],uint sm){
+    for(uint8_t i=0;i<repeticoes;i++){
+        anima(num_frames,desenho,sm);
     }
 }
 
@@ -225,7 +246,7 @@ int main() {
                 break;
 
             case '2':   //Arthur
-                anima(9,arthur,pio,sm);
+                animacao(2,9,arthur,sm);
                 break;
 
             case '3':
