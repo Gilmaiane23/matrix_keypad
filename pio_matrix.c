@@ -11,6 +11,8 @@
 #include "pio_matrix.pio.h"
 
 #include "animacoes.h"
+// Animação Isaque
+#include "animacaoIsaque.h"
 
 // Número de LEDs
 #define NUM_PIXELS 25
@@ -242,7 +244,7 @@ int main() {
                 break;
 
             case '1':  //GIL
-                
+                animacao(2,7,gil,sm);
                 break;
 
             case '2':   //Arthur
@@ -268,6 +270,8 @@ int main() {
                 break;
 
             case '9':
+                executar_animacao(pio, sm); //Isaque
+
                 break;
 
             case '0'://buzzer
