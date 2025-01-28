@@ -212,7 +212,8 @@ int main() {
                 animacao(2,9,arthur,sm);
                 break;
 
-            case '3': 
+            case '3':   //Pablo
+                animacao(3, 5, pablo, sm);
                 break;
 
             case '4': // Daniel Porto
