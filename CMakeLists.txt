@@ -41,7 +41,7 @@ pico_set_program_name(pio_matrix "pio_matrix")
 pico_set_program_version(pio_matrix "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(pio_matrix 0)
+pico_enable_stdio_uart(pio_matrix 1)
 pico_enable_stdio_usb(pio_matrix 1)
 
 pico_generate_pio_header(pio_matrix ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)

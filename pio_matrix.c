@@ -188,72 +188,85 @@ int main() {
     long unsigned int frames = sizeof(movie) / sizeof(movie[0]);
 
     while (true) {
-        animate(movie, frames, 200);
 
-        // char tecla = teclado();
-        // switch (tecla) {
+        char tecla = teclado();
+        switch (tecla) {
 
-        //     case 'A': //Todos os LEDs deverão ser desligados.
-        //         desenho_pioA(desenhoA, pio, sm, r, g, b);
-        //         break;
-        //     case 'B': //Todos os LEDs deverão ser ligados na cor azul, no nível de intensidade de 100%.
-        //         desenho_pioB(desenhoB, pio, sm, r, g, b);
-        //         break;
+            case 'A': //Todos os LEDs deverão ser desligados.
+                printf("A\n");
+                desenho_pioA(desenhoA, pio, sm, r, g, b);
+                break;
+            case 'B': //Todos os LEDs deverão ser ligados na cor azul, no nível de intensidade de 100%.
+                printf("B\n");
+                desenho_pioB(desenhoB, pio, sm, r, g, b);
+                break;
 
-        //     case 'C': //Todos os LEDs deverão ser ligados na cor vermelha, no nível de intensidade de 80%.
-        //         desenho_pioC(desenhoC, pio, sm, r, g, b);
-        //         break;
+            case 'C': //Todos os LEDs deverão ser ligados na cor vermelha, no nível de intensidade de 80%.
+                printf("C\n");
+                desenho_pioC(desenhoC, pio, sm, r, g, b);
+                break;
 
-        //     case 'D': //todos os LEDs deverão serligados na cor verde, no nível de intensidade de 50%
-        //         desenho_pioD(desenhoD, pio, sm, r, g, b);
-        //         break;
+            case 'D': //todos os LEDs deverão serligados na cor verde, no nível de intensidade de 50%
+                printf("D\n");
+                desenho_pioD(desenhoD, pio, sm, r, g, b);
+                break;
 
-        //     case '#': //Todos os LEDs deverão ser ligados na cor branca, no nível de intensidade de 20%.
-        //         desenho_pio20(desenho20, pio, sm, 1.0, 1.0, 1.0); 
-        //         break;
+            case '#': //Todos os LEDs deverão ser ligados na cor branca, no nível de intensidade de 20%.
+                printf("#\n");
+                desenho_pio20(desenho20, pio, sm, 1.0, 1.0, 1.0); 
+                break;
 
-        //     case '*':
-        //         reboot_device();
-        //         break;
+            case '*':
+                printf("*\n");
+                reboot_device();
+                break;
 
-        //     case '1':  //GIL
-                
-        //         break;
+            case '1':  //GIL
+                printf("1\n");
+                break;
 
-        //     case '2':
-        //         break;
+            case '2':
+                printf("2\n");
+                break;
 
-        //     case '3':
-        //         break;
+            case '3':
+                printf("3\n");
+                break;
 
-        //     case '4':
-        //         break;
+            case '4':
+                printf("4\n");
+                break;
 
-        //     case '5':
-        //         break;
+            case '5':
+                printf("5\n");
+                break;
 
-        //     case '6':
-        //         animate(movie, frames, 200);
-        //         break;
+            case '6':
+                printf("6\n");
+                animate(movie, frames, 200);
+                break;
 
-        //     case '7':
-        //         break;
+            case '7':
+                printf("7\n");
+                break;
 
-        //     case '8':
-        //         break;
+            case '8':
+                printf("8\n");
+                break;
 
-        //     case '9':
-        //         break;
+            case '9':
+                printf("9\n");
+                break;
 
-        //     case '0'://buzzer
+            case '0'://buzzer
+                printf("0\n");
+                break;
 
-        //     break;
+            default:
+                break;
+        }
 
-        //     default:
-        //     break;
-        // }
-
-        // sleep_ms(300);
+        sleep_ms(300);
         
     }
 }

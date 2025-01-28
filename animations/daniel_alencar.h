@@ -257,11 +257,20 @@ double* frame8[LAYERS] = {
     drawning_red_8,
     drawning_green_8,
 };
+double* frame9[LAYERS] = {
+    drawning_blue_9,
+    drawning_red_9,
+    drawning_green_9,
+};
 
 double **movie[] = {
     frame1,
     frame2,
     frame3,
     frame4,
-    frame5
+    frame5,
+    frame6,
+    frame7,
+    frame8,
+    frame9
 };
