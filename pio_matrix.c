@@ -221,6 +221,7 @@ int main() {
                 break;
 
             case '5':
+                animacao(2,10,andre,sm);
                 break;
 
             case '6':
