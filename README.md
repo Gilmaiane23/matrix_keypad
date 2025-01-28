@@ -1,15 +1,10 @@
 # Geração de Animações em Matriz de LEDs 5x5
 
 ## Descrição
-Este projeto tem como objetivo a geração de animações em uma matriz de LEDs 5x5 utilizando o Raspberry Pi Pico W e um teclado matricial 4x4. A atividade é parte da disciplina de Microcontroladores – GPIO, Unidade 4 | Capítulo 3 – 201234A, sob orientação do Prof. Dr. Ricardo Menezes Prates, com a entrega realizada em 20/01/2025.
+Este projeto tem como objetivo a geração de animações em uma matriz de LEDs 5x5 utilizando o Raspberry Pi Pico W e um teclado matricial 4x4. 
 
 O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma animação correspondente seja exibida na matriz de LEDs RGB 5x5. Além disso, as teclas A, B, C, D, # e * possuem funções específicas para manipulação da matriz de LEDs, como desligar ou acender os LEDs com cores e intensidades predeterminadas.
 
-## Componentes Utilizados
-- **Raspberry Pi Pico W**: Microcontrolador utilizado para controlar a matriz de LEDs e processar as entradas do teclado matricial.
-- **Teclado Matricial 4x4**: Utilizado para inserir comandos e acionar animações.
-- **Matriz de LEDs RGB 5x5 WS2812**: Composta por 25 LEDs coloridos, utilizados para exibir animações.
-- **Buzzer Passivo Eletromagnético MLT-8530 SMD 3.6V** (opcional): Utilizado para gerar sinais sonoros durante a execução de animações.
 
 ## Requisitos de Funcionamento
 1. **Teclado Matricial**:
@@ -26,12 +21,6 @@ O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma a
 
 3. **Buzzer (opcional)**:
    - Em uma das animações, o buzzer gera um sinal sonoro durante a execução da animação.
-
-## Requisitos Técnicos
-- **Ambiente de Desenvolvimento**: Visual Studio Code (VS Code) com integração do Wokwi para simulação do circuito e desenvolvimento de código.
-- **Linguagem de Programação**: C, utilizando o Kit de Desenvolvimento de Software (SDK) do Raspberry Pi Pico.
-- **Simulador**: Wokwi integrado ao VS Code para simulação dos componentes.
-- **Versionamento**: Git para controle de versão do código-fonte e GitHub para armazenamento e colaboração.
 
 ## Como Executar
 1. Clone o repositório:
@@ -57,10 +46,18 @@ Cada desenvolvedor é responsável por criar testes básicos para garantir que o
 
 
 ## Vídeo de Demonstração
-
+```bash
+   Link:  .
+   ```
 ## Colaboradores
 - **Líder**: [Gilmaiane Porto]
-- **Desenvolvedores**: [Nome dos integrantes da equipe]
+- **Desenvolvedores**: [Arthur de Oliveira Moreira]
+                       [André da Silva Caldas Chagas]
+                       [Daniel Alencar Penha Carvalho]
+                       [Daniel Porto Braz]
+                       [Isaque Coelho de Jesus]
+                       [Júlio Henrique Lima de Oliveira Sousa]
+                       [Pablo Henrique Dourado Souza]
 
 ## Licença
 Este projeto é licenciado sob a licença MIT – consulte o arquivo LICENSE para mais detalhes.

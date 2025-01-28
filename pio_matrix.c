@@ -12,14 +12,21 @@
 
 #include "animations/daniel_alencar.h"
 
+#include "animacoes.h"
+// Animação Isaque
+#include "animacaoIsaque.h"
+
 // Número de LEDs
 #define NUM_PIXELS 25
 
 // Pino de saída
 #define OUT_PIN 7
 
+// Tempo do frame
+#define FPS 200
+
 // Configuração teclado matricial
-uint8_t linhas[4] = {16, 17, 18, 8};
+uint8_t linhas[4] = {16, 17, 18, 28};
 uint8_t colunas[4] = {19, 20, 4, 9};
 uint8_t n_lin = 4, n_col = 4;
 
@@ -60,49 +67,6 @@ char teclado() {
     return ' '; // Retorna espaço caso nenhuma tecla seja pressionada
 }
 
-
-// Desenhos
-
-double desenhopadrao[25] = {0.1, 0.1, 0.1, 0.1, 0.1,
-                           0.0, 0.0, 0.0, 0.0, 0.1, 
-                           0.1, 0.0, 0.0, 0.0, 0.1,
-                           0.0, 0.0, 0.0, 0.0, 0.1,
-                           0.1, 0.1, 0.1, 0.1, 0.1};
-
-//vetor para criar imagem na matriz de led - A
-double desenhoA[25] = {0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0, 
-                        0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0};
-
-//vetor para criar imagem na matriz de led - B
-double desenhoB[25] = {1.0, 1.0, 1.0, 1.0, 1.0,
-                      1.0, 1.0, 1.0, 1.0, 1.0, 
-                      1.0, 1.0, 1.0, 1.0, 1.0,
-                      1.0, 1.0, 1.0, 1.0, 1.0,
-                      1.0, 1.0, 1.0, 1.0, 1.0};
-
-//vetor para criar imagem na matriz de led - C
-double desenhoC[25] = {0.8, 0.8, 0.8, 0.8, 0.8,
-                       0.8, 0.8, 0.8, 0.8, 0.8, 
-                       0.8, 0.8, 0.8, 0.8, 0.8,
-                       0.8, 0.8, 0.8, 0.8, 0.8,
-                       0.8, 0.8, 0.8, 0.8, 0.8};
-
-//vetor para criar imagem na matriz de led - D
-double desenhoD[25] = {0.5, 0.5, 0.5, 0.5, 0.5,
-                       0.5, 0.5, 0.5, 0.5, 0.5, 
-                       0.5, 0.5, 0.5, 0.5, 0.5,
-                       0.5, 0.5, 0.5, 0.5, 0.5, 
-                       0.5, 0.5, 0.5, 0.5, 0.5,};
-
-//vetor para criar imagem na matriz de led - #
-double desenho20[25] = {0.2, 0.2, 0.2, 0.2, 0.2,
-                        0.2, 0.2, 0.2, 0.2, 0.2, 
-                        0.2, 0.2, 0.2, 0.2, 0.2,
-                        0.2, 0.2, 0.2, 0.2, 0.2,
-                        0.2, 0.2, 0.2, 0.2, 0.2};
 
 
 //Configuração intensidade dos LEDs
@@ -158,6 +122,38 @@ void desenho_pio20(double *desenho, PIO pio, uint sm, double r, double g, double
 }
 
 
+// Funções para as animações 
+
+uint8_t obter_index(uint8_t i) {
+    uint8_t x = i % 5;  // Coluna
+    uint8_t y = i / 5;  // Linha
+    if (y % 2 == 0) {
+        return y * 5 + x;
+    } else {
+        return y * 5 + (4 - x);
+    }
+}
+
+//rotina para acionar a matrix de leds - ws2812b
+
+void anima(uint8_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS],uint sm){
+    uint32_t valor_led;
+    for (uint8_t i = 0; i < num_frames; i++){
+        for (uint8_t j = 0; j < NUM_PIXELS; j++) 
+        {
+            uint8_t pos = obter_index(j);
+            valor_led = desenho[i][24-pos] * 5.0;
+            pio_sm_put_blocking(pio0, sm, valor_led);
+        }
+        sleep_ms(FPS);
+    }
+}
+
+void animacao(uint8_t repeticoes,uint8_t num_frames,uint32_t desenho[num_frames][NUM_PIXELS],uint sm){
+    for(uint8_t i=0;i<repeticoes;i++){
+        anima(num_frames,desenho,sm);
+    }
+}
 
 //Função para reboot
 void reboot_device() {
@@ -165,7 +161,7 @@ void reboot_device() {
 }
 
 
-
+// Programa principal
 int main() {
     PIO pio = pio0;
     bool ok;
@@ -221,41 +217,43 @@ int main() {
                 reboot_device();
                 break;
 
-            case '1':  //GIL
-                printf("1\n");
+            case '1':
+                printf("5\n");
+                animacao(2,7,gil,sm);
                 break;
 
-            case '2':
-                printf("2\n");
+            case '2':   //Arthur
+                animacao(2,9,arthur,sm);
                 break;
 
-            case '3':
-                printf("3\n");
+            case '3':   //Pablo
+                animacao(3, 5, pablo, sm);
                 break;
 
-            case '4':
-                printf("4\n");
+            case '4': // Daniel Porto
+                animacao(2,15,daniel,sm);
                 break;
 
             case '5':
-                printf("5\n");
+                animacao(2,10,andre,sm);
                 break;
 
-            case '6':
+            case '6':  //Daniel Alencar
                 printf("6\n");
-                animate(movie, frames, 200);
+                animate(movie, frames, 200);  
                 break;
 
-            case '7':
-                printf("7\n");
+            case '7': // Julio
+                animacao(3,5,julio,sm);
                 break;
 
             case '8':
+                printf("9\n");
+                executar_animacao(pio, sm); //Isaque
                 printf("8\n");
                 break;
 
             case '9':
-                printf("9\n");
                 break;
 
             case '0'://buzzer
@@ -270,3 +268,4 @@ int main() {
         
     }
 }
+
