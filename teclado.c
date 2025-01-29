@@ -2,8 +2,8 @@
 #include "pico/stdlib.h"
 
 // Configuração do teclado matricial
-static uint8_t linhas[4] = {16, 17, 18, 28}; //{16, 17, 18, 9}; teste Gil
-static uint8_t colunas[4] = {28, 20, 4, 9}; //{19, 20, 4, 8}
+static uint8_t linhas[4] = {16, 17, 18, 9}; //{16, 17, 18, 9}; teste Gil
+static uint8_t colunas[4] = {19, 20, 4, 8}; //{19, 20, 4, 8}
 static uint8_t n_lin = 4, n_col = 4;
 
 static char teclas[4][4] = {
