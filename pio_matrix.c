@@ -90,7 +90,8 @@ int main() {
                 animacao(3, 5, pablo, sm); //ok
                 break;
 
-            case '4': 
+            case '4':
+                animacao(1,17,jogo,sm);
                 printf("4\n");
                 break;
 

@@ -40,6 +40,7 @@ extern uint32_t pablo[5][NUM_PIXELS];
 extern uint32_t andre[10][NUM_PIXELS];
 extern uint32_t daniel_alencar[8][NUM_PIXELS];
 extern uint32_t xadrez[17][NUM_PIXELS];
+extern uint32_t jogo[17][NUM_PIXELS];
 extern double desenhopadrao[25];
 extern double desenhoA[25];
 extern double desenhoB[25];
