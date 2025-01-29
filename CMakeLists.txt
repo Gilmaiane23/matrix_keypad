@@ -51,7 +51,8 @@ target_sources(pio_matrix PRIVATE
     led_control.c
     teclado.c
     reboot.c
-    led_matrix.c)
+    led_matrix.c
+    buzzer.c)
 
 # Add the standard library to the build
 target_link_libraries(pio_matrix PRIVATE
@@ -59,6 +60,7 @@ target_link_libraries(pio_matrix PRIVATE
         hardware_pio
 	    hardware_adc
         pico_bootrom
+        hardware_pwm
         )
 
 # Add the standard include files to the build
