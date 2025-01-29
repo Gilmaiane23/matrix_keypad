@@ -91,6 +91,7 @@ int main() {
 
             case '6':  //Daniel Alencar
                 //animate(movie, frames, 200);  
+                animacao(3,8,daniel_alencar,sm); //Daniel
                 break;
 
             case '7': // Julio
