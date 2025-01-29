@@ -47,7 +47,7 @@ Cada desenvolvedor foi responsável por criar testes básicos para garantir que 
 
 ## Vídeo de Demonstração
 ```bash
-   Link: https://youtu.be/I6U1m52rovY?feature=shared
+   Link: https://youtu.be/I6U1m52rovY
    ```
 ## Colaboradores
 - **Líder**: [Gilmaiane Porto]
