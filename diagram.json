@@ -51,6 +51,13 @@
       "top": -443.6,
       "left": 159.2,
       "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 184.8,
+      "left": -113.4,
+      "attrs": { "volume": "0.1" }
     }
   ],
   "connections": [
@@ -148,7 +155,9 @@
     [ "keypad1:C1", "pico:GP19", "green", [ "v0" ] ],
     [ "keypad1:C2", "pico:GP20", "green", [ "v0" ] ],
     [ "keypad1:C3", "pico:GP4", "green", [ "v153.6", "h-278.55" ] ],
-    [ "keypad1:C4", "pico:GP9", "green", [ "v0" ] ]
+    [ "keypad1:C4", "pico:GP9", "green", [ "v0" ] ],
+    [ "pico:GND.4", "bz1:1", "black", [ "h-28.8", "v124.84", "h-9.6" ] ],
+    [ "bz1:2", "pico:GP10", "green", [ "v19.2", "h76.4", "v-153.6" ] ]
   ],
   "dependencies": {}
 }
