@@ -32,9 +32,7 @@ O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma a
    cd matrix_keypad
    ```
 3. Abra o projeto no VS Code:
-   ```bash
-   code .
-   ```
+
 4. Compile e simule o projeto usando o Wokwi, ou carregue o código diretamente no Raspberry Pi Pico W.
 
 5. Conecte o teclado matricial e a matriz de LEDs RGB ao Raspberry Pi Pico W conforme o esquema de ligação indicado no projeto.
