@@ -10,11 +10,11 @@
 // Arquivo .pio
 #include "pio_matrix.pio.h"
 #include "animacoes.h"
-#include "animacaoIsaque.h"
 #include "led_matrix.h"
 #include "reboot.h"
 #include "led_control.h"
 #include "teclado.h"
+#include "buzzer.h"
 
 // Número de LEDs
 #define NUM_PIXELS 25
@@ -25,6 +25,9 @@
 // Tempo do frame
 #define FPS 200
 
+//Pino de saída e frequência do buzzer
+#define BUZZER 10 
+#define FREQUENCY 1000
 
 uint32_t matrix_rgb_conversor(double b, double r, double g) {
     unsigned char R, G, B;
@@ -66,48 +69,50 @@ int main() {
                 break;
 
             case '*':
-                reboot_device();
+                reboot_device(); //Função reboot
                 break;
 
            case '1':
-                printf("1\n");
-                break;
-
-            case '2':   //Arthur
-                animacao(2,9,arthur,sm); //ok
-                break;
-
-            case '3':   //Pablo
-                animacao(3, 5, pablo, sm); //ok
-                break;
-
-            case '4': 
-                printf("4\n");
-                break;
-
-            case '5':
-                animacao(2,10,andre,sm);
-                break;
-
-            case '6':  //Daniel Alencar
-                //animate(movie, frames, 200);  
-                break;
-
-            case '7': // Julio
-                printf("7\n");
-                animacao(3,5,julio,sm); 
-                break;
-
-            case '8':
-                animacao(2,15,daniel,sm); //Daniel
-                break;
-
-            case '9':
                 animacao(2,7,gil,sm); //Gil
                 break;
 
+            case '2':   //Arthur
+                animacao(2,9,arthur,sm); 
+                break;
+
+            case '3':   //Pablo
+                animacao(3, 5, pablo, sm); 
+                break;
+
+            case '4': 
+                animacao(2,10,andre,sm); //Andre
+                break;
+
+            case '5': //Daniel Alencar
+                //animate(movie, frames, 200); 
+                animacao(3,8,daniel_alencar,sm); 
+                break;
+
+            case '6':  // Julio
+                animacao(3,5,julio,sm); 
+                break;
+
+            case '7': 
+                animacao(2,15,daniel,sm); //Daniel Porto
+                break;
+
+            case '8':
+                executar_a(pio, sm); //Isaque 
+                break;
+
+            case '9':
+                start_buzzer(BUZZER,FREQUENCY); // Chama a função para ativar o buzzer
+                animacao(1,17,xadrez,sm); // Chama a função de animação
+                stop_buzzer(BUZZER); // Desliga o buzzer
+                break;
+
             case '0':
-                executar_a(pio, sm); //Isaque   
+                animacao(1,17,jogo,sm);
                 break;
 
             default:

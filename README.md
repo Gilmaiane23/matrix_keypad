@@ -3,9 +3,6 @@
 ## Descrição
 Este projeto tem como objetivo a geração de animações em uma matriz de LEDs 5x5 utilizando o Raspberry Pi Pico W e um teclado matricial 4x4. 
 
-O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma animação correspondente seja exibida na matriz de LEDs RGB 5x5. Além disso, as teclas A, B, C, D, # e * possuem funções específicas para manipulação da matriz de LEDs, como desligar ou acender os LEDs com cores e intensidades predeterminadas.
-
-
 ## Requisitos de Funcionamento
 1. **Teclado Matricial**:
    - **Teclas 0 a 9**: Acionam animações diferentes na matriz de LEDs.
@@ -14,13 +11,18 @@ O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma a
    - **Tecla C**: Liga todos os LEDs na cor vermelha com 80% de luminosidade.
    - **Tecla D**: Liga todos os LEDs na cor verde com 50% de luminosidade.
    - **Tecla #**: Liga todos os LEDs na cor branca com 20% de luminosidade.
-   - **Tecla * (opcional)**: Coloca o Raspberry Pi Pico W no modo de gravação via software (reboot).
 
 2. **Animações**:
-   - 10 animações diferentes (uma para cada tecla de 0 a 9), com no mínimo 5 frames (quadros) e FPS configurável para garantir fluidez.
-
-3. **Buzzer (opcional)**:
-   - Em uma das animações, o buzzer gera um sinal sonoro durante a execução da animação.
+   - **Tecla 1**: Executa animação "Gil".
+   - **Tecla 2**: Executa animação "Arthur".
+   - **Tecla 3**: Executa animação "Pablo".
+   - **Tecla 4**: Executa animação "André".
+   - **Tecla 5**: Executa animação "Daniel Alencar".
+   - **Tecla 6**: Executa animação "Julio".
+   - **Tecla 7**: Executa animação "Daniel Porto".
+   - **Tecla 8**: Executa animação "Isaque".
+   - **Tecla 9**: Ativa o buzzer e executa animação "xadrez".
+   - **Tecla * (opcional)**: Coloca o Raspberry Pi Pico W no modo de gravação via software (reboot).
 
 ## Como Executar
 1. Clone o repositório:
@@ -42,12 +44,12 @@ O sistema permite que, ao pressionar as teclas do teclado matricial (0-9), uma a
 6. Execute o código e interaja com as animações através do teclado matricial.
 
 ## Testes
-Cada desenvolvedor é responsável por criar testes básicos para garantir que os recursos (como animações, controles de LEDs e buzzer) estejam funcionando corretamente.
+Cada desenvolvedor foi responsável por criar testes básicos para garantir que os recursos (como animações, controles de LEDs e buzzer) estejam funcionando corretamente.
 
 
 ## Vídeo de Demonstração
 ```bash
-   Link:  .
+   Link:  
    ```
 ## Colaboradores
 - **Líder**: [Gilmaiane Porto]
