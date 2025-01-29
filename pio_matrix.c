@@ -15,12 +15,17 @@
 #include "reboot.h"
 #include "led_control.h"
 #include "teclado.h"
+#include "buzzer.h"
 
 // Número de LEDs
 #define NUM_PIXELS 25
 
 // Pino de saída
 #define OUT_PIN 7
+
+//Pino de saída e frequência do buzzer
+#define BUZZER 10
+#define FREQUECY 1000
 
 // Tempo do frame
 #define FPS 200
@@ -37,6 +42,7 @@ uint32_t matrix_rgb_conversor(double b, double r, double g) {
 int main() {
     inicializa_teclado();
     setup_led_matrix();
+    setup_buzzer(BUZZER,FREQUECY);
 
     float r = 1.0, g = 1.0, b = 1.0; // Inicialização das variáveis RGB
     // Configurando a matriz de leds
@@ -70,6 +76,9 @@ int main() {
                 break;
 
            case '1':
+                start_buzzer(BUZZER,FREQUECY);
+                animacao(1,17,xadrez,sm);
+                stop_buzzer(BUZZER);
                 printf("1\n");
                 break;
 

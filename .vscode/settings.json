@@ -40,6 +40,7 @@
         "animacoes.h": "c",
         "led_control.h": "c",
         "teclado.h": "c",
-        "led_matrix.h": "c"
+        "led_matrix.h": "c",
+        "buzzer.h": "c"
     }
 }
