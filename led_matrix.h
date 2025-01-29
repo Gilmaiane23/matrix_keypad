@@ -38,11 +38,8 @@ extern uint32_t gil[7][NUM_PIXELS];
 extern uint32_t julio[5][NUM_PIXELS];
 extern uint32_t pablo[5][NUM_PIXELS];
 extern uint32_t andre[10][NUM_PIXELS];
-<<<<<<< HEAD
 extern uint32_t daniel_alencar[8][NUM_PIXELS];
-=======
 extern uint32_t xadrez[17][NUM_PIXELS];
->>>>>>> b00c3f2a2f9ecea94583fd7bdf58791ee839a912
 extern double desenhopadrao[25];
 extern double desenhoA[25];
 extern double desenhoB[25];
